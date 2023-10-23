@@ -9,8 +9,11 @@ left = (1198,425,80,80)
 top = (1231,393,80,80)
 bot = (1231,458,80,80)
 
-# Static small axe position
-axe = (1546, 551)
+# Static positions
+AXE = (1546, 551)
+MANA = (1880, 235, 35, 22)
+FOOD = (1583, 549)
+MINIMAP = (1728, 31, 183, 182)
 
 list_positions = [right, left, top, bot]
 
@@ -35,22 +38,39 @@ def move_and_click(location):
   move(location)
   pyautogui.click()
 
+# Conjure rune (cast spell saved on F3 hotkey)
+def conjure_rune():
+  mana = pyautogui.locateOnScreen('images/mana.PNG', confidence=0.7, region=MANA)
+  if mana != None:
+    keyboard.press_and_release('F3')
+
+# Eat food (right slot of the small axe)
+def eat_food():
+  pyautogui.moveTo(FOOD)
+  pyautogui.click(FOOD, button='right')
+
 # Press P in-game to start running
 keyboard.wait('p')
 
-# TODO: check if the tree was gathered, it have a chance to fail. 
-# If fails -> call get_tree(tree) until the tree be completely gathered
-for index in range(17):
-  while True:
-    position_in_map = pyautogui.locateOnScreen('icons/icon_{}.png'.format(index), confidence=0.90)
-    print(position_in_map)
-    if position_in_map != None:
-      move_and_click(position_in_map)
-      sleep(3)
-      check_position = pyautogui.locateOnScreen('icons/icon_{}.png'.format(index), confidence=0.90)
-      if check_position == None:
-        for position in list_positions:
-          for index in range(8):
-            tree = pyautogui.locateOnScreen('images/tree_{}.PNG'.format(index), confidence=0.7, region=position)
-            get_tree(tree)
-        #break
+while True:
+  for index in range(62):
+    while True:
+      position_in_map = pyautogui.locateOnScreen('icons/icon_{}.png'.format(index), confidence=0.90, region=MINIMAP)
+      print('waypoint: {}'.format(index))
+      if position_in_map != None:
+        move_and_click(position_in_map)
+        sleep(6)
+        conjure_rune()
+        eat_food()
+        sleep(0.5)
+        check_position = pyautogui.locateOnScreen('icons/icon_{}.png'.format(index), confidence=0.90, region=MINIMAP)
+        if check_position == None:
+          for position in list_positions:
+            for index in range(8):
+              while True:
+                tree = pyautogui.locateOnScreen('trees/tree_{}.PNG'.format(index), confidence=0.7, region=position)
+                if tree != None:
+                  get_tree(tree)
+                else:
+                  break
+          break
