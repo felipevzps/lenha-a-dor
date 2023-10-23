@@ -26,8 +26,8 @@ def move(location):
 def get_tree(location):
   if location != None:
     sleep(0.5)
-    pyautogui.moveTo(axe)
-    pyautogui.click(axe, button='right')
+    pyautogui.moveTo(AXE)
+    pyautogui.click(AXE, button='right')
     sleep(0.5)
     move(location)
     pyautogui.click(button='left')
