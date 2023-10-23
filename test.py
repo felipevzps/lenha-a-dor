@@ -10,7 +10,12 @@ axe = (1546, 551)
 
 list_positions = [right, left, top, bot]
 
+# TODO: Fix trees caption (function get_tree()) 
+# Some trees is just been captured in certain angles
+# (e.g. large pines are beeing captured only if the character is on their north-west tile) 
+
 '''
+# While loop to debug lenha-a-dor
 while True:
     tree_right = pyautogui.locateOnScreen('trees_test/tree_0.png', confidence=0.7, region = right)
     tree_left = pyautogui.locateOnScreen('trees_test/tree_0.png', confidence=0.7, region = left)
@@ -37,7 +42,9 @@ def get_tree(location):
     sleep(0.5)
     move(location)
     pyautogui.click(button='left')
-
+      
+# While loop to gather trees controlling the character manually
+# This loop automatically gather trees in the list_positions spots (right, left, top and bottom of the character)
 while True:
     for position in list_positions:
       for index in range(8):
