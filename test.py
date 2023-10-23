@@ -7,6 +7,7 @@ top = (1231,393,80,80)
 bot = (1231,458,80,80)
 
 axe = (1546, 551)
+mana = (1880, 235)
 
 list_positions = [right, left, top, bot]
 
@@ -14,21 +15,25 @@ list_positions = [right, left, top, bot]
 # Some trees is just been captured in certain angles
 # (e.g. large pines are beeing captured only if the character is on their north-west tile) 
 
-'''
-# While loop to debug lenha-a-dor
+#'''
 while True:
-    tree_right = pyautogui.locateOnScreen('trees_test/tree_0.png', confidence=0.7, region = right)
-    tree_left = pyautogui.locateOnScreen('trees_test/tree_0.png', confidence=0.7, region = left)
-    tree_top = pyautogui.locateOnScreen('trees_test/tree_0.png', confidence=0.7, region = top)
-    tree_bot = pyautogui.locateOnScreen('trees_test/tree_0.png', confidence=0.7, region = bot)
-    print('tree right = {}'.format(tree_right))
-    print('tree left = {}'.format(tree_left))
-    print('tree top = {}'.format(tree_top))
-    print('tree bot = {}'.format(tree_bot))
+    tree_right = pyautogui.locateOnScreen('trees/tree_0.png', confidence=0.7, region = right)
+    tree_left = pyautogui.locateOnScreen('trees/tree_0.png', confidence=0.7, region = left)
+    tree_top = pyautogui.locateOnScreen('trees/tree_0.png', confidence=0.7, region = top)
+    tree_bot = pyautogui.locateOnScreen('trees/tree_0.png', confidence=0.7, region = bot)
+    tree_bot = pyautogui.locateOnScreen('trees/tree_0.png', confidence=0.7, region = bot)
+    mana = pyautogui.locateOnScreen('images/mana.PNG', confidence=0.7)
+    minimap = pyautogui.locateOnScreen('images/minimap.PNG', confidence=0.7)
+    #print('tree right = {}'.format(tree_right))
+    #print('tree left = {}'.format(tree_left))
+    #print('tree top = {}'.format(tree_top))
+    #print('tree bot = {}'.format(tree_bot))
+    #print(mana)
+    print(minimap)
     #tree = pyautogui.locateOnScreen('images/tree_5.PNG', confidence=0.7)
     #print(tree)
-    #print(pyautogui.position())
-'''
+    print(pyautogui.position())
+#'''
 
 def move(location):
   x,y = pyautogui.center(location)
@@ -45,9 +50,9 @@ def get_tree(location):
       
 # While loop to gather trees controlling the character manually
 # This loop automatically gather trees in the list_positions spots (right, left, top and bottom of the character)
-while True:
-    for position in list_positions:
-      for index in range(8):
-        tree = pyautogui.locateOnScreen('images/tree_{}.PNG'.format(index), confidence=0.7, region=position)
-        get_tree(tree)
-        #break
+#while True:
+#    for position in list_positions:
+#      for index in range(8):
+#        tree = pyautogui.locateOnScreen('images/tree_{}.PNG'.format(index), confidence=0.7, region=position)
+#        get_tree(tree)
+#        #break
