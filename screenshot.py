@@ -1,7 +1,6 @@
 import pyautogui
 from pynput.mouse import Listener
 
-
 class Photo:
   def __init__(self):
     self.count = 0
@@ -11,13 +10,14 @@ class Photo:
     path = 'icons/icon_{}.png'.format(self.count)
     self.count = self.count + 1
     my_screen.save(path)
-
+  
+  # Mouse left click: take a picture of the mouse position (20x20 pixels)
+  # Mouse right click: stop this program
   def click(self, x, y, button, pressed):
     if button.name == 'right':
       return False
     if pressed:
       self.take_photo(x, y)
-
 
 photo = Photo()
 
