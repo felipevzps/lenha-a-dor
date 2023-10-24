@@ -52,8 +52,10 @@ def eat_food():
 # Press P in-game to start running
 keyboard.wait('p')
 
+tree_counter = 0
+
 while True:
-  for index in range(62):
+  for index in range(61):
     while True:
       position_in_map = pyautogui.locateOnScreen('icons/icon_{}.png'.format(index), confidence=0.90, region=MINIMAP)
       print('waypoint: {}'.format(index))
@@ -63,8 +65,10 @@ while True:
         conjure_rune()
         eat_food()
         sleep(0.5)
+        print('Harvested trees: {}'.format(tree_counter))
         check_position = pyautogui.locateOnScreen('icons/icon_{}.png'.format(index), confidence=0.90, region=MINIMAP)
         if check_position == None:
+          tree_counter += 1
           for position in list_positions:
             for index in range(8):
               while True:
