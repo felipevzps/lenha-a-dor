@@ -40,7 +40,7 @@ def move_and_click(location):
 
 # Conjure rune (cast spell saved on F3 hotkey)
 def conjure_rune():
-  mana = pyautogui.locateOnScreen('images/mana.PNG', confidence=0.7, region=MANA)
+  mana = pyautogui.locateOnScreen('images/mana.PNG', confidence=0.6, region=MANA)
   if mana != None:
     keyboard.press_and_release('F3')
 
@@ -49,46 +49,32 @@ def eat_food():
   pyautogui.moveTo(FOOD)
   pyautogui.click(FOOD, button='right')
 
-# Initially the loop is OFF
-loop_ativo = False
-
-def iniciar_loop():
-    global loop_ativo
-    loop_ativo = True
-
-def pausar_loop():
-    global loop_ativo
-    loop_ativo = False
-
 # Press P in-game to start running
-keyboard.add_hotkey('p', iniciar_loop)
-# Press K in-game to pause
-keyboard.add_hotkey('k', pausar_loop)
+keyboard.wait('p')
 
 tree_counter = 0
 
 while True:
-  if loop_ativo:
-    for index in range(61):
-      while True:
-        position_in_map = pyautogui.locateOnScreen('icons/icon_{}.png'.format(index), confidence=0.90, region=MINIMAP)
-        print('waypoint: {}'.format(index))
-        if position_in_map != None:
-          move_and_click(position_in_map)
-          sleep(6)
-          conjure_rune()
-          eat_food()
-          sleep(0.5)
-          print('Harvested trees: {}'.format(tree_counter))
-          check_position = pyautogui.locateOnScreen('icons/icon_{}.png'.format(index), confidence=0.90, region=MINIMAP)
-          if check_position == None:
-            tree_counter += 1
-            for position in list_positions:
-              for index in range(8):
-                while True:
-                  tree = pyautogui.locateOnScreen('trees/tree_{}.PNG'.format(index), confidence=0.7, region=position)
-                  if tree != None:
-                    get_tree(tree)
-                  else:
-                    break
-            break
+  for index in range(61):
+    while True:
+      position_in_map = pyautogui.locateOnScreen('icons/icon_{}.png'.format(index), confidence=0.90, region=MINIMAP)
+      print('waypoint: {}'.format(index))
+      if position_in_map != None:
+        move_and_click(position_in_map)
+        sleep(6)
+        conjure_rune()
+        eat_food()
+        sleep(0.5)
+        print('Harvested trees: {}'.format(tree_counter))
+        check_position = pyautogui.locateOnScreen('icons/icon_{}.png'.format(index), confidence=0.90, region=MINIMAP)
+        if check_position == None:
+          tree_counter += 1
+          for position in list_positions:
+            for index in range(8):
+              while True:
+                tree = pyautogui.locateOnScreen('trees/tree_{}.PNG'.format(index), confidence=0.7, region=position)
+                if tree != None:
+                  get_tree(tree)
+                else:
+                  break
+          break
