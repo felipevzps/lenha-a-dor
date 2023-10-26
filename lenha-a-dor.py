@@ -4,10 +4,10 @@ import pyautogui
 
 # Positions of the tree based on character position
 # right = tree is on the right of character ...
-right = (1264,426,80,80)
-left = (1198,425,80,80)
-top = (1231,393,80,80)
-bot = (1231,458,80,80)
+right = (1264,426,70,70)
+left = (1198,425,70,70)
+top = (1231,393,70,70)
+bot = (1231,458,70,70)
 
 # Static positions
 AXE = (1546, 551)
