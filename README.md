@@ -2,6 +2,8 @@
 
 Automated lumberjack in [Darkrest Online](https://darkrest.online/?news).
 
+Continuously search for map waypoints using image recognition and gather wood.
+
 Features include: `auto lumberjack` and `mana trainer`.
 > **Note:** [Lumberjacking](https://darkrest-online.gitbook.io/darkrest.online-wiki/gathering-and-crafting/gathering) is the process of chopping down trees to gather wood.
 
@@ -13,6 +15,7 @@ Features include: `auto lumberjack` and `mana trainer`.
 pip install pyautogui
 pip install keyboard
 ```
+
 ## Usage
 
 ```python
@@ -30,6 +33,8 @@ MINIMAP = (1728, 31, 183, 182)
 ```
 
 >**Note:** Execute [locateOnScreen.py](https://github.com/felipevzps/lenha-a-dor/blob/main/locateOnScreen.py) in VSCode to capture coordinates. Hover your mouse over desired locations while the script runs, like Small Axe position in backpack for `AXE`.
+>
+>You also have to set the waypoints route in your MINIMAP using [screenshot.py](https://github.com/felipevzps/lenha-a-dor/blob/main/screenshot.py)
 
 After adding coordinates to [lenha-a-dor.py](https://github.com/felipevzps/lenha-a-dor/blob/main/lenha-a-dor.py), run the bot in VSCode, minimize it, and press `p` in-game to start fishing.
 
