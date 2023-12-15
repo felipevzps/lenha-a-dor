@@ -1,6 +1,10 @@
 import pyautogui
 from pynput.mouse import Listener
 
+# Usage:
+  # Mouse left click: take a picture of the mouse position on minmap (20x20 pixels)
+  # Mouse right click: stop this program
+
 class Photo:
   def __init__(self):
     self.count = 0
@@ -11,8 +15,6 @@ class Photo:
     self.count = self.count + 1
     my_screen.save(path)
   
-  # Mouse left click: take a picture of the mouse position (20x20 pixels)
-  # Mouse right click: stop this program
   def click(self, x, y, button, pressed):
     if button.name == 'right':
       return False
