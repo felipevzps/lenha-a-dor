@@ -4,10 +4,10 @@ import pyautogui
 
 # Positions of the tree based on character position
 # right = tree is on the right of character ...
-right = (1264,426,70,70)
-left = (1198,425,70,70)
-top = (1231,393,70,70)
-bot = (1231,458,70,70)
+right = (1264,426,60,60)
+left = (1198,425,60,60)
+top = (1231,393,60,60)
+bot = (1231,458,60,60)
 
 # Static positions
 AXE = (1546, 551)
@@ -57,7 +57,7 @@ tree_counter = 0
 while True:
   for index in range(61):
     while True:
-      position_in_map = pyautogui.locateOnScreen('icons/icon_{}.png'.format(index), confidence=0.90, region=MINIMAP)
+      position_in_map = pyautogui.locateOnScreen('icons_teste/icon_{}.png'.format(index), confidence=0.90, region=MINIMAP)
       print('waypoint: {}'.format(index))
       if position_in_map != None:
         move_and_click(position_in_map)
@@ -66,7 +66,7 @@ while True:
         eat_food()
         sleep(0.5)
         print('Harvested trees: {}'.format(tree_counter))
-        check_position = pyautogui.locateOnScreen('icons/icon_{}.png'.format(index), confidence=0.90, region=MINIMAP)
+        check_position = pyautogui.locateOnScreen('icons_teste/icon_{}.png'.format(index), confidence=0.90, region=MINIMAP)
         if check_position == None:
           tree_counter += 1
           for position in list_positions:
