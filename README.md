@@ -14,6 +14,8 @@ Features include: `auto lumberjack` and `mana trainer`.
 ```bash
 pip install pyautogui
 pip install keyboard
+pip install Pillow
+pip install opencv-python
 ```
 
 ## Usage
